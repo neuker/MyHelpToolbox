@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<link rel="stylesheet" type="text/css" href="css/custom.css"/>
+
+</head>
+
+<body>
+
+<h1><a href="/"><img alt="home" src="images/tool.png" /></a><span>Home</span></h1>
+
+<ul id="menu">
+    <li><a href="/">Home</a></li>
+    <li><a href="/languages">View all</a></li>
+    <li id="searchItem">
+        <form action="/search/index" class="searchForm" method="get">
+          <fieldset>
+              <label>Search: </label>
+              <input id="q" name="q" type="text" value="" />
+              <input name="commit" type="submit" value="search" />
+            </fieldset>
+        </form>
+    </li>
+</ul>
+
+<div class="sideBar">
+
+    <div class="tagPanel">
+
+        <h3 id="tagListHeader">Tags</h3>
+		
+        <ul class="tagList">
+            <li><a href="/tags/performance">performance</a></li>
+            <li><a href="/tags/caching">caching</a></li>
+            <li><a href="/tags/caching">caching</a></li>
+            <li><a href="/tags/caching">caching</a></li>
+            <li><a href="/tags/caching">caching</a></li>
+            <li><a href="/tags/caching">caching</a></li>
+	    </ul>
+
+    </div>
+
+</div>
+
+<div class="main">
+
+    <h3>Creating The App</h3>
+    
+    <p>If you find writing the view code for forms rather long-winded, you&rsquo;ll be pleased to know that there&rsquo;s a gem called <a href="http://github.com/justinfrench/formtastic">Formtastic</a> which provides a more concise way to do it. With it, fairly complex forms can be created with relatively little code as we&rsquo;ll show you in this episode.</p>
+    
+    
+
+<pre class="ruby">
+&lt;% semantic_form_for @animal do |f| %&gt;
+    &lt;% f.inputs do %&gt;
+      &lt;%= f.input :name %&gt;
+      &lt;%= f.input :born_on %&gt;
+      &lt;%= f.input :category %&gt;
+      &lt;%= f.input :female %&gt;
+    &lt;% end %&gt;
+    &lt;%= f.buttons %&gt;
+&lt;% end %&gt;
+</pre>
+
+
+
+<pre class="ruby">
+&lt;table&gt;
+    &lt;tr&gt;  
+        &lt;td&gt;sadfafsd&lt;/td&gt;  
+        &lt;td&gt;&lt;%= article.published_at %&gt;&lt;/td&gt;  
+        &lt;td&gt;&lt;%= article.hidden %&gt;&lt;/td&gt;  
+        &lt;td&gt;&lt;%= link_to &#039;Show&#039;, article %&gt;&lt;/td&gt;  
+        &lt;td&gt;&lt;%= link_to &#039;Edit&#039;, edit_article_path(article) %&gt;&lt;/td&gt;  
+        &lt;td&gt;&lt;%= link_to &#039;Destroy&#039;, article, :confirm =&gt; &#039;Are you sure?&#039;, :method =&gt; :delete %&gt;&lt;/td&gt;  
+    &lt;/tr&gt;
+&lt;/table&gt;
+</pre>
+
+<pre>
+&lt;form id=&quot;frm&quot; action=&quot;https://www.paypal.com/cgi-bin/webscr&quot; method=&quot;post&quot;&gt;
+    Enter amount: &lt;input type=&quot;text&quot; id=&quot;amount&quot; onChange=&quot;readText(this.form)&quot; name=&quot;amount&quot; /&gt;           
+    &lt;input type=&quot;hidden&quot; name=&quot;product_name_tmp1&quot; value=&quot;Recurring Donation&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;cmd&quot; value=&quot;_xclick-subscriptions&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;business&quot; value=&quot;admin@njedesign.com&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;item_name&quot; value=&quot;Recurring Donation for Detroit Central City Community Mental Health&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;currency_code&quot; value=&quot;USD&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;item_number&quot; value=&quot;1&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;no_note&quot; value=&quot;1&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;a3&quot; value=&quot;50.00&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;p3&quot; value=&quot;24&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;t3&quot; value=&quot;M&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;return&quot; value=&quot;http://www.dcccmh.org/thank-you&quot; /&gt;
+    &lt;input type=&quot;hidden&quot; name=&quot;page_style&quot; value=&quot;&quot; /&gt;
+    &lt;input type=&quot;image&quot; src=&quot;images/btn-recurring-donation.gif&quot; border=&quot;0&quot; name=&quot;submit&quot; alt=&quot;PayPal - The safer, easier way to pay online!&quot;&gt;
+&lt;/form&gt;   
+</pre>
+
+<pre>
+public bool CommentsInsert(Comments objComments)
+{
+
+    string CustNameID = objComments.CustNameID;
+    int Rating = objComments.Rating;
+    string Comment = objComments.Comment;
+
+    string connString = ConfigurationSettings.AppSettings.Get(&quot;connString&quot;);
+
+    using (OleDbConnection cn = new OleDbConnection(connString))
+    {
+        using (OleDbCommand command = new OleDbCommand(&quot;INSERT INTO [CustomerComments] ([CustNameID], [Rating], [Comment]) VALUES (@CustNameID, @Rating, @Comment)&quot;, cn))
+        {
+
+            command.Parameters.Add(&quot;@CustNameID&quot;, OleDbType.VarWChar, 255).Direction = ParameterDirection.Input;
+            command.Parameters.Add(&quot;@Rating&quot;, OleDbType.Integer, 4).Direction = ParameterDirection.Input;
+            command.Parameters.Add(&quot;@Comment&quot;, OleDbType.VarWChar, 255).Direction = ParameterDirection.Input;
+
+            command.Parameters[&quot;@CustNameID&quot;].Value = CustNameID;
+            command.Parameters[&quot;@Rating&quot;].Value = Rating;
+            command.Parameters[&quot;@Comment&quot;].Value = Comment;
+
+            cn.Open();
+            command.ExecuteNonQuery();
+
+        }
+
+        cn.Close();
+
+    }
+
+    return true;
+
+}
+</pre>
+
+</div>
+
+</body>
+</html>
