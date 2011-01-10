@@ -8,11 +8,21 @@
 </head>
 <body>
 
-<h1><a href="/"><img src="images/tool.png" alt="MyHelpToolbox" /></a><span>Home</span></h1>
+<div id="container">
+	
+<h1><a href="/"><img src="/images/tool.png" alt="MyHelpToolbox" /></a><span>Home</span></h1>
+
+<div id="adminLinks">
+<% if admin? %>
+	<a href="/logout">Logout</a>
+<% else %>
+	<a href="/login">Login</a>
+<% end %>
+</div>
 
 <ul id="menu">
     <li><a href="/">Home</a></li>
-    <li><a href="/languages">View all</a></li>
+    <li><a href="/articles">View all</a></li>
     <li id="searchItem">
         <form action="/search/index" class="searchForm" method="get">
           <fieldset>
@@ -22,6 +32,7 @@
             </fieldset>
         </form>
     </li>
+	
 </ul>
 
 <div class="sideBar">
@@ -44,8 +55,18 @@
 </div>
 
 <div class="main">
+	
+	<% flash.each do |key, value| %>
+		<div class="flash <%= key %>"><%= value %></div>
+	<% end %>
+	
+	<%= yield %>
 
-<%= yield %>
+</div>
+
+<div id="footer">
+	
+</div>
 
 </div>
 

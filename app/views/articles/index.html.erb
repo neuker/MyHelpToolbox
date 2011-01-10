@@ -1,4 +1,14 @@
 <% for article in @articles do %>
-	<h2><%=h article.title %></h2>
+	<h2><%=link_to(h(article.title), article_path(article)) %></h2>
 	<p><%= article.desc %></p>
+	
+	<% if admin? %>
+	<p class="adminActions">
+		<%= link_to "Edit", edit_article_path(article) %>
+		<%= link_to "Destroy", article_path(article), :confirm => "Are you sure?", :method => :delete %>
+	</p>
+	<% end %>
+	
 <% end %>
+
+<%= link_to "New", new_article_path %>
