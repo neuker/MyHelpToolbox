@@ -2,7 +2,7 @@ html { background-color: #D7D7D0; }
 body { font-family: Verdana, Helvetica, Arial, sans-serif; font-size: 0.8em;  color: #333;background-color: #D7D7D0; }
 #container {
 	margin: 20px auto;
-	padding: 20px;
+	padding: 32px 14px 32px 32px;
 	width: 960px;
 	background-color: #f9f9f9;
 	position: relative;
@@ -28,6 +28,24 @@ a { color: #900; }
 code, pre { font: bold 1.1em "Menlo", "Monaco", "BitStream Vera Sans Mono", "Consolas", "Courier New"; }
 ol, ul { list-style-type: none; margin-left: 0; padding-left: 0; }
 fieldset { margin: 0; padding: 0; border: none 0; }
+
+.editForm {
+}
+.editForm input[type=text], .editForm input.text {
+	width: 400px;
+}
+.editForm input[type=submit] {
+}
+.editForm textarea {
+	padding:5px;
+	height: 600px;
+	width: 600px;
+}
+textarea.textareaInputSmall {
+	width: 400px;
+	height: 50px;
+}
+
 
 div.main { margin-right: 164px; }
 div.sideBar { width: 150px; margin-top: 8px; float: right;  }

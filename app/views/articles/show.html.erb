@@ -1,3 +1,15 @@
 <h2><%=link_to(h(@article.title), article_path(@article)) %></h2>
 
-<pre><%= @article.desc %></pre>
+<p><%= @article.desc %></p>
+
+<div class="sourcecode">
+
+		<%= raw @article.sourcecode %>
+
+</div>
+<div class="category">
+	Category: <%= @article.category%>
+</div>
+<div class="tags">
+	Tags: <%= @article.tags %>
+</div>
